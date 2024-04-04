@@ -45,3 +45,5 @@
 - 
 ## 実装機能リストURL
 https://docs.google.com/spreadsheets/d/1G7g2pPMt6e1GwXrVQB3KbcXEYm0ZU3JpMNmWd7on5qA/edit?usp=sharing
+
+<!--星実装https://qiita.com/kcl215/items/e226ac58d14360fd1b8e-->
