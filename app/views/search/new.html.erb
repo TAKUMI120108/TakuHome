@@ -1,3 +1,84 @@
+<h2>Search </br>
+様々な地域の家を探そう</h2>
+<%= form_with model: @search, url: '/view' ,method: :post do |f| %>
+<h3>◼条件から検索︎</h3>
+  <h4>都道府県</h4>
+  <%= f.text_field :address %>
 
-<h1>Search</h1>
-<p>Find me in app/views/search/new.html.erb</p>
+   <h4>市町村</h4>
+  <%= f.text_field :address %>
+
+  
+  <h4>駅徒歩</h4>
+   <%= f.text_field :address %>
+
+
+  <%= f.submit 'Search' %>
+
+<% end %>
+<h3>◼地図から検索︎</h3>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Marker</title>
+    <!-- The callback parameter is required, so we use console.debug as a noop -->
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_pMPKBFvD6eui05Xsqpn1X_v22UaixOQ&callback=console.debug&libraries=maps,marker&v=beta">
+    </script>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      gmp-map {
+        height:500px;
+        width:700px;
+      }
+
+      /* Optional: Makes the sample page fill the window. */
+      html,
+      body {
+        height: 500px;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <gmp-map center="33.86421203613281,130.903076171875" zoom="14" map-id="DEMO_MAP_ID">
+      <gmp-advanced-marker position="33.86421203613281,130.903076171875" title="My location"></gmp-advanced-marker>
+    </gmp-map>
+  </body>
+</html>
+
+<h2>※賃貸探す前に知っておく費用</h2>
+<h3>敷金</h3>
+<p>退去時の原状回復に充てられる金額</br>
+家賃の1カ月～2カ月分が目安</p>
+<h3>礼金</h3>
+<p>賃料以外に家主に退去時支払う一時謝礼金</br>
+家賃の1カ月～2カ月分が目安</p>
+<h3>管理費</h3>
+<p>マンション・アパート全体の清掃費や</br>
+管理会社に支払う金額</p>
+<h3>仲介手数料</h3>
+<p>不動産会社に支払う金額</br>
+家賃の1カ月分が上限</p>
+<h3>保証料</h3>
+<p>万が一家賃を払えなくなった場合に備えて</br>
+保証会社に支払う金額</p>
+<h3>火災保険料</h3>
+<p>火災や水漏れなどに対する損害保険2年ごとに入りなおす必要がある</br>
+（一人暮らしの部屋の相場:1万5000円～2万円）</p>
+<h3>更新料</h3>
+<p>更新期間ごとに更新料として支払う金額</br>
+家賃の1カ月分(2年に1回)が目安。</p>
+
+<li>
+ <%= link_to "Post 情報を投稿し共有しよう", new_post_path %>
+</li>
+
+<li>
+ <%= link_to "View みんなの投稿を覗いてみよう", view_index_path %>
+</li>
+
+<li>
+ <%= link_to "Calculate 様々な内訳を計算しよう", new_calculate_path %>
+</li>

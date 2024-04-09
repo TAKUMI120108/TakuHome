@@ -1,0 +1,21 @@
+<h2>No</h2>
+<%= link_to @post.id, customer_path %> 
+<h2>コメント</h2>
+<%= @post.address %>
+    <div id="star_<%= @post.id %>"></div>
+    <h2>評価</h2>
+<script>
+  let elem = document.querySelector('#star_<%= @post.id %>');
+  if (elem == null) return;
+  
+  elem.innerHTML = "";
+  let opt = {  
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    score: "<%= @post.star %>",
+    readOnly: true,　　
+  };
+  raty(elem, opt);
+});
+</script>

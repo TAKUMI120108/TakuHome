@@ -1,5 +1,5 @@
 <h1>TakuHome</h1>
-<%= form_with model: @post, url: '/search' do |f| %>
+<%= form_with model: @post, url: post_index_path, method: :post do |f| %>
   <h4>住所</h4>
   <%= f.text_field :address %>
   
@@ -7,22 +7,28 @@
   <%= f.text_area :comment %>
 	
 	<h4>評価</h4>
-   <% if @post.id.nil? %>
+  <% if @post.id.nil? %>
     <div class="form-group row" id="star">
-    <%= f.label :star,'評価 ', class:'col-md-3 col-form-label' %>
-    <%= f.hidden_field :star, id: :review_star %>
+      <%= f.label :star,'評価 ', class:'col-md-3 col-form-label' %>
+      <%= f.hidden_field :star, id: :review_star %>
     </div>
     <script>
-     　　　　$('#star').empty();
-  $('#star').raty({
-    size     : 36,
-    starOff:  '<%= asset_path('star-off.png') %>',
-    starOn : '<%= asset_path('star-on.png') %>',
- 　 　　　scoreName: 'post[star]',　
-    half: false,
-  });
+  
+      let elem = document.querySelector("#star");
+      elem.innerHTML = "";
+      
+      let opt = {
+        size     : 36,
+        starOff:  '<%= asset_path('star-off.png') %>',
+        starOn : '<%= asset_path('star-on.png') %>',
+     　  scoreName: 'post[star]',　
+        half: false
+      }
+      
+      raty(elem, opt);
     </script>
+  <% end %>
 
   <%= f.submit '完了' %>
-<% end %>
+
 <% end %>

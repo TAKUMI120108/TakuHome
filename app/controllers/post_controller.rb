@@ -4,14 +4,22 @@ class PostController < ApplicationController
   end
   
   def create
-    @post = Post.new(post_params)
-    @post.customer_id = current_customer_id
-    @post.save
-    redirect_to view_path(customer_id)
+    post = Post.new(post_params)
+    post.customer_id = current_customer.id
+    post.save
+    redirect_to post_path(post.id)
+  end
+  
+  def show
+    @post = Post.find(params[:id])
+  end
+  
+  def index
+    @posts = Post.all
   end
   
 private
   def post_params
-    params.require(:book).permit(:address, :comment, :evaluation, :customer_id, :star)
+    params.require(:post).permit(:address, :comment, :evaluation, :customer_id, :star)
   end
 end

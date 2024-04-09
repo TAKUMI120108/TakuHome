@@ -1,14 +1,12 @@
 Rails.application.routes.draw do
   
- 
-  get 'view/index'
-  get 'view/show'
-  get 'view/edit'
-  get 'post/new'
   devise_for :customers
    root to: "homes#top"
     resources :search, only: [:new, :index, :show, :create] 
-    resources :post, only: [:new]
+    resources :post
+    resources :view, only: [:new,:create, :index, :show, :edit]
+    resources :calculate, only: [:new]
+    resources :customer, only: [:show, :edit]
    get "homes/about" => "homes#about", as: "about" 
    get "homes/introduction" => "homes#introduction", as: "introduction" 
    get "homes/completed" => "homes#completed", as: "completed" 
