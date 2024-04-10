@@ -1,12 +1,13 @@
 <h2>No</h2>
 <%= link_to @post.id, customer_path %> 
-<h2>コメント</h2>
+<h2>都道府県</h2>
 <%= @post.address %>
-    <div id="star_<%= @post.id %>"></div>
-    <h2>評価</h2>
+<h2>コメント</h2>
+<%= @post.comment %>
+<h2>評価</h2>
+  <div id="star_<%= @post.id %>"></div>
 <script>
   let elem = document.querySelector('#star_<%= @post.id %>');
-  if (elem == null) return;
   
   elem.innerHTML = "";
   let opt = {  
@@ -17,5 +18,17 @@
     readOnly: true,　　
   };
   raty(elem, opt);
-});
+
 </script>
+
+<li>
+ <%= link_to "Search 様々な地域の家を探そう", new_search_path %>
+</li>
+
+<li>
+ <%= link_to "Post 情報を投稿し共有しよう", new_post_path %>
+</li>
+
+<li>
+ <%= link_to "Calculate 様々な内訳を計算しよう", new_calculate_path %>
+</li>

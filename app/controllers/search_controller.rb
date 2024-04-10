@@ -4,6 +4,8 @@ class SearchController < ApplicationController
  end
 
   def index
+   @search = Search.all
+   
   end
 
  def create

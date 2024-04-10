@@ -1,7 +1,39 @@
 <% @posts.each do |post| %>
   <h4>No</h4>
 <%= post.id %> 
-<h4>コメント</h4>
+<h4>都道府県</h4>
 <%= post.address %>
+<h4>コメント</h4>
+<%= post.comment %>
+<h4>評価</h4>
+  <div id="star_<%= post.id %>"></div>
+  
+<script>
+  let elem = document.querySelector('#star_<%= post.id %>');
+  
+  elem.innerHTML = "";
+  let opt = {  
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    score: "<%= post.star %>",
+    readOnly: true,　　
+  };
+  raty(elem, opt);
+
+</script>
 <% end %>
+
+<li>
+ <%= link_to "Search 様々な地域の家を探そう", new_search_path %>
+</li>
+
+<li>
+ <%= link_to "Post 情報を投稿し共有しよう", new_post_path %>
+</li>
+
+<li>
+ <%= link_to "Calculate 様々な内訳を計算しよう", new_calculate_path %>
+</li>
+
 
