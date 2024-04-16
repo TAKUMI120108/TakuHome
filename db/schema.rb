@@ -52,6 +52,11 @@ ActiveRecord::Schema.define(version: 2024_04_06_041107) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "name"
+    t.string "address"
+    t.text "comment"
+    t.integer "evaluation"
+    t.integer "customer_id"
+    t.string "star"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
@@ -71,6 +76,16 @@ ActiveRecord::Schema.define(version: 2024_04_06_041107) do
   create_table "searches", force: :cascade do |t|
     t.string "address"
     t.integer "price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "views", force: :cascade do |t|
+    t.string "address"
+    t.text "comment"
+    t.integer "evaluation"
+    t.integer "customer_id"
+    t.string "star"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

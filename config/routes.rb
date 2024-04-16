@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :search, only: [:new, :index, :show, :create] 
     resources :post
     resources :calculate, only: [:new]
-    resources :customer, only: [:show, :edit]
+    resources :customer, only: [:index, :create, :show, :edit, :update]
    get "homes/about" => "homes#about", as: "about" 
    get "homes/introduction" => "homes#introduction", as: "introduction" 
    get "homes/completed" => "homes#completed", as: "completed" 

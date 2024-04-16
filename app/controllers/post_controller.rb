@@ -18,6 +18,27 @@ class PostController < ApplicationController
     @posts = Post.all
   end
   
+  def edit
+    @post = Post.find(params[:id])
+    
+  end
+  
+  def update
+    post = Post.find(params[:id])
+    if post.update(post_params)
+      flash[:notice] = "成功してるよー"
+    redirect_to post_index_path
+    else
+    render :edit
+    end
+  end
+  
+  def destroy
+    post = Post.find(params[:id])
+    post.destroy
+    redirect_to post_index_path
+  end
+  
 private
   def post_params
     params.require(:post).permit(:address, :comment, :evaluation, :customer_id, :star)

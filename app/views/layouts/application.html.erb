@@ -12,8 +12,12 @@
 
   <body>
       <header>
+        <h1>Taku</br>Home</h1>
     <% if customer_signed_in? %>
-    <li>
+       <div>管理者用
+       <%= link_to current_customer.name, customer_index_path %>
+      </div>
+     <li>
         <%= link_to "Search", new_search_path %>
       </li>
       <li>

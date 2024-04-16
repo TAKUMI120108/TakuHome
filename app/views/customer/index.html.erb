@@ -1,30 +1,34 @@
-<% @posts.each do |post| %>
+ <div>
+       <%= current_customer.name%>
+      </div>
+<%= link_to "編集", edit_customer_path(@customer) %>
+<% @customer.each do |customer| %>
   <h4>No</h4>
-<%= link_to post.id,customer_path(post.id)  %> 
+<%= link_to customer.id, customer_path(current_customer.id)  %> 
 <h4>都道府県</h4>
-<%= post.address %>
+<%= customer.address %>
 <h4>コメント</h4>
-<%= post.comment %>
+<%= customer.comment %>
 <h4>評価</h4>
-  <div id="star_<%= post.id %>"></div>
+  <div id="star_<%= customer.id %>"></div>
   
-<script>{
-  let elem = document.querySelector('#star_<%= post.id %>');
+<script>
+  let elem = document.querySelector('#star_<%= customer.id %>');
   
   elem.innerHTML = "";
   let opt = {  
     starOn: "<%= asset_path('star-on.png') %>",
     starOff: "<%= asset_path('star-off.png') %>",
     starHalf: "<%= asset_path('star-half.png') %>",
-    score: "<%= post.star %>",
+    score: "<%= customer.star %>",
     readOnly: true,　　
   };
   raty(elem, opt);
-}
+
 </script>
 
-<%= link_to "編集", edit_post_path(post.id) %>
-<%= link_to "削除", post_path(post.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+<%= link_to "編集", edit_post_path(customer.id) %>
+<%= link_to "削除", post_path(customer.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
 <% end %>
 
 <li>

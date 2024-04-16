@@ -1,2 +1,43 @@
-<h1>Customer#show</h1>
-<p>Find me in app/views/customer/show.html.erb</p>
+
+  <h4>No</h4>
+<%= link_to @customer.id, customer_path(@customer.id)  %> 
+  <h4><%= @customer.name %></h4>
+<h4>都道府県</h4>
+<%= @customer.address %>
+<h4>コメント</h4>
+<%= @customer.comment %>
+<h4>評価</h4>
+  <div id="star_<%= @customer.id %>"></div>
+  
+<script>
+  let elem = document.querySelector('#star_<%= @customer.id %>');
+  
+  elem.innerHTML = "";
+  let opt = {  
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    score: "<%= @customer.star %>",
+    readOnly: true,　　
+  };
+  raty(elem, opt);
+
+</script>
+
+<%= link_to "編集", edit_post_path(@customer.id) %>
+<%= link_to "削除", post_path(@customer.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+
+
+<li>
+ <%= link_to "Search 様々な地域の家を探そう", new_search_path %>
+</li>
+
+<li>
+ <%= link_to "Post 情報を投稿し共有しよう", new_post_path %>
+</li>
+
+<li>
+ <%= link_to "Calculate 様々な内訳を計算しよう", new_calculate_path %>
+</li>
+
+

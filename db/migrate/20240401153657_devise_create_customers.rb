@@ -33,6 +33,11 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       # t.datetime :locked_at
       
       t.string :name
+      t.string :address
+      t.text :comment
+      t.integer :evaluation
+      t.integer :customer_id
+      t.string :star
       t.timestamps null: false
     end
 
@@ -42,3 +47,4 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
     # add_index :customers, :unlock_token,         unique: true
   end
 end
+
