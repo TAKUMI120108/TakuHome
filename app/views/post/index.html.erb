@@ -1,6 +1,13 @@
 <% @posts.each do |post| %>
+<h4>プロフィール</h4>
+ <% if post.image.attached? %>
+  <%= image_tag post.image, size: "200x200" %>
+  <% else %>
+    <%= image_tag 'no_image', size: "200x200" %>
+  <% end %>
   <h4>No</h4>
-<%= link_to post.id,customer_path(post.id)  %> 
+<%= link_to post.id,post_path(post.id)  %> 
+
 <h4>都道府県</h4>
 <%= post.address %>
 <h4>コメント</h4>

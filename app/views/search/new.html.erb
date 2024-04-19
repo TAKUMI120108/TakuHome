@@ -2,6 +2,7 @@
 様々な地域の家を探そう</h2>
 <%= form_with model: @search, url: '/view' ,method: :post do |f| %>
 <h3>◼条件から検索︎</h3>
+<h3>場所</h3>
   <h4>都道府県</h4>
   <%= f.text_field :address %>
 
@@ -11,11 +12,29 @@
   
   <h4>駅徒歩</h4>
    <%= f.text_field :address %>
+<h3>賃料</h3>
+<h4>賃料
+     <%= f.select :faculty, [["下限なし", "下限なし"], ["0~30000円", "0~30000円"], ["30000~50000円", "30000~50000円"], 
+     ["50000~70000円", "50000~70000円"], ["70000~100000円", "70000~100000円"], ["100000円~", "100000円~"]], include_blank: "下限" %>
+     〜
+     <%= f.select :faculty, [["上限なし", "上限なし"], ["0~30000円", "0~30000円"], ["30000~50000円", "30000~50000円"], 
+     ["50000~70000円", "50000~70000円"], ["70000~100000円", "70000~100000円"], ["100000円~", "100000円~"]], include_blank: "上限" %>
+</h4>
+<h4>敷金<%= check_box_tag :test1 %>
+<%= label_tag :test1, "" %></h4>
+<h4>礼金<%= check_box_tag :test2 %>
+<%= label_tag :test2, "" %></h4>
+<h4>管理費<%= check_box_tag :test3 %>
+<%= label_tag :test3, "" %></h4>
+<h4>保証料<%= check_box_tag :test4 %>
+<%= label_tag :test4, "" %></h4>
 
-
+</br>
   <%= f.submit 'Search' %>
 
 <% end %>
+
+
 <h3>◼地図から検索︎</h3>
 <!DOCTYPE html>
 <html>

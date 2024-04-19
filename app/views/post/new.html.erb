@@ -1,5 +1,6 @@
-<h1>TakuHome</h1>
+<h1>Post 情報を投稿し共有しよう</h1>
 <%= form_with model: @post, url: post_index_path, method: :post do |f| %>
+
   <h4>住所</h4>
   <%= f.text_field :address %>
   

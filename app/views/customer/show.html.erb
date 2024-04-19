@@ -1,4 +1,8 @@
-
+<% if @customer.image.attached? %>
+  <%= image_tag @customer.image, size: "200x200" %>
+  <% else %>
+    <%= image_tag 'no_image', size: "200x200" %>
+  <% end %>
   <h4>No</h4>
 <%= link_to @customer.id, customer_path(@customer.id)  %> 
   <h4><%= @customer.name %></h4>

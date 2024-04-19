@@ -1,8 +1,7 @@
 class CustomerController < ApplicationController
   
   def index
-    @customer = Customer.all
-
+    @customers = Customer.all
   end
   
   def create
@@ -28,7 +27,7 @@ class CustomerController < ApplicationController
   
   private
   def customer_params
-    params.require(:customer).permit(:address, :comment, :evaluation, :customer_id, :star)
+    params.require(:customer).permit(:address, :comment, :evaluation, :customer_id, :star,:image)
   end
 end
 
