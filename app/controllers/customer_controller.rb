@@ -15,14 +15,22 @@ class CustomerController < ApplicationController
     @customer = Customer.find(params[:id])
   end
 
+  def mypage 
+    @customer = current_customer
+  end
+
   def edit
     @customer = Customer.find(current_customer.id)
   end
   
   def update
     customer = Customer.find(params[:id])
-    customer.update(customer_params)
-    redirect_to customer_path
+    if customer.update(customer_params)
+    flash[:notice] = "You have updated costomer successfully." 
+    redirect_to  mypage_customer_index_path
+    else
+    render :edit
+    end
   end
   
   private

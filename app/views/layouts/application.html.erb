@@ -15,7 +15,7 @@
         <h1>Taku</br>Home</h1>
     <% if customer_signed_in? %>
        <div>管理者用
-       <%= link_to current_customer.name, customer_index_path %>
+       <%= link_to current_customer.name, mypage_customer_index_path %>
       </div>
      <li>
         <%= link_to "Search", new_search_path %>
@@ -50,6 +50,11 @@
       </li>
     <% end %>
   </header>
+  <main>
+   <% flash.each do |message_type, message| %>
+      <div class="flash-message <%= message_type %>"><%= message %></div>
+    <% end %>
     <%= yield %>
+    </main>
   </body>
 </html>

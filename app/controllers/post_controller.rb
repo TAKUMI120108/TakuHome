@@ -6,9 +6,15 @@ class PostController < ApplicationController
   def create
     post = Post.new(post_params)
     post.customer_id = current_customer.id
-    post.save
-    redirect_to post_path(post.id)
+    if post.save
+     flash[:notice] = "投稿に成功しました。"
+     redirect_to post_path(post.id)
+    else
+     flash.now[:alert] = "投稿に失敗しました。"
+     render :new
+    end
   end
+ 
   
   def show
     @post = Post.find(params[:id])
@@ -25,8 +31,12 @@ class PostController < ApplicationController
   
   def update
     post = Post.find(params[:id])
-    post.update(post_params)
+    if post.update(post_params)
+      flash[:notice] = "You have updated post successfully."
     redirect_to post_path(post.id)
+    else
+     render :edit  
+    end
   end
   
   def destroy

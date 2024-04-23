@@ -1,37 +1,42 @@
+  <h4><%= @customer.name %>
+<%= link_to "編集", edit_customer_path(@customer) %>
+</h4>
+  <h4>都道府県</h4>
+<h4>コメント</h4>
+<h4>評価</h4>
+  <% @customer.posts.each do |post| %>
+  <h4><%= @customer.name %></h4>
 <% if @customer.image.attached? %>
   <%= image_tag @customer.image, size: "200x200" %>
   <% else %>
     <%= image_tag 'no_image', size: "200x200" %>
   <% end %>
-  <h4>No</h4>
-<%= link_to @customer.id, customer_path(@customer.id)  %> 
-  <h4><%= @customer.name %></h4>
-<h4>都道府県</h4>
-<%= @customer.address %>
-<h4>コメント</h4>
-<%= @customer.comment %>
-<h4>評価</h4>
-  <div id="star_<%= @customer.id %>"></div>
-  
-<script>
-  let elem = document.querySelector('#star_<%= @customer.id %>');
+   <div>
+          <%= post.address %>
+      </div>
+      <div>
+          <%= post.comment %>
+      </div>
+      <div id="star_<%= post.id %>"></div>
+<script>{
+  let elem = document.querySelector('#star_<%= post.id %>');
   
   elem.innerHTML = "";
   let opt = {  
     starOn: "<%= asset_path('star-on.png') %>",
     starOff: "<%= asset_path('star-off.png') %>",
     starHalf: "<%= asset_path('star-half.png') %>",
-    score: "<%= @customer.star %>",
+    score: "<%= post.star %>",
     readOnly: true,　　
   };
   raty(elem, opt);
-
+}
 </script>
 
-<%= link_to "編集", edit_post_path(@customer.id) %>
-<%= link_to "削除", post_path(@customer.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+<%= link_to "編集", edit_post_path(post.id) %>
+<%= link_to "削除", post_path(post.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
 
-
+<% end %>
 <li>
  <%= link_to "Search 様々な地域の家を探そう", new_search_path %>
 </li>

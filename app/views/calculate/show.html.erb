@@ -32,6 +32,12 @@
 </p>
 <% end %>
  
+ <p>結果</p>
+
+ <%= @keisan.number1 %> +  <%= @keisan.number2 %> =   <%= @tashizan %> <BR> 
+ <%= @keisan.number1 %> -  <%= @keisan.number2 %>  =  <%= @hikizan %> <BR>
+ <%= @keisan.number1 %> *  <%= @keisan.number2 %> = <%= @kakezan %> <BR>
+ <%= @keisan.number1 %> /  <%= @keisan.number2 %> = <%= @warizan %> <BR>
 
  
 <%= link_to "Topへ", calculate_index_path %>

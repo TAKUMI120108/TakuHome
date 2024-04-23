@@ -4,8 +4,12 @@ Rails.application.routes.draw do
    root to: "homes#top"
     resources :search, only: [:new, :index, :show, :create] 
     resources :post
-    resources :calculate, only: [:new]
-    resources :customer, only: [:index, :create, :show, :edit, :update]
+    resources :calculate, only: [:new, :index, :create, :show]
+    resources :customer, only: [:index, :create, :show, :edit, :update] do
+      collection do
+        get :mypage 
+      end
+    end
    get "homes/about" => "homes#about", as: "about" 
    get "homes/introduction" => "homes#introduction", as: "introduction" 
    get "homes/completed" => "homes#completed", as: "completed" 
