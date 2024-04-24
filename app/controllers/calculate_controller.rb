@@ -19,9 +19,9 @@ class CalculateController < ApplicationController
   end
   
   def create
-    calculate = Calculate.new(calculate_params)
-    calculate.save
-    redirect_to calculate_path(calculate.id)
+    @calculate = Calculate.new(calculate_params)
+    @calculate.save
+    redirect_to calculate_path(@calculate)
   end
   
   private

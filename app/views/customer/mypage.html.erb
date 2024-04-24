@@ -1,24 +1,30 @@
   <h4><%= @customer.name %>
 <%= link_to "編集", edit_customer_path(@customer) %>
 </h4>
-  <h4>都道府県</h4>
-<h4>コメント</h4>
-<h4>評価</h4>
-  <% @customer.posts.each do |post| %>
-  <h4><%= @customer.name %></h4>
-<% if @customer.image.attached? %>
+  <% if @customer.image.attached? %>
   <%= image_tag @customer.image, size: "200x200" %>
   <% else %>
     <%= image_tag 'no_image', size: "200x200" %>
   <% end %>
-   <div>
-          <%= post.address %>
-      </div>
-      <div>
-          <%= post.comment %>
-      </div>
-      <div id="star_<%= post.id %>"></div>
-<script>{
+
+
+
+<table class="table table-dark text-center">
+  <thead>
+    <tr>
+      <th class="col">都道府県</th>
+      <th class="col">コメント</th>
+      <th colspan="col">評価</th>
+    </tr>
+  </thead>
+
+<tbody>
+ <% @customer.posts.each do |post| %>
+  <tr>
+    <td class="col"><%= post.address %></td>
+    <td class="col"><%= post.comment %></td>
+    <td class="col"><div id="star_<%= post.id %>">
+    <script>{
   let elem = document.querySelector('#star_<%= post.id %>');
   
   elem.innerHTML = "";
@@ -32,21 +38,27 @@
   raty(elem, opt);
 }
 </script>
-
-<%= link_to "編集", edit_post_path(post.id) %>
-<%= link_to "削除", post_path(post.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+  </td>
+    <td class="col"><%= link_to "編集", edit_post_path(post.id) %></td>
+    <td class="col"><%= link_to "削除", post_path(post.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+  </tr>
+</tbody>
 
 <% end %>
-<li>
- <%= link_to "Search 様々な地域の家を探そう", new_search_path %>
-</li>
 
-<li>
- <%= link_to "Post 情報を投稿し共有しよう", new_post_path %>
-</li>
-
-<li>
- <%= link_to "Calculate 様々な内訳を計算しよう", new_calculate_path %>
-</li>
-
-
+<tbody>
+  <tr>
+    <td>
+       <%= link_to "Search 様々な地域の家を探そう", new_search_path %>
+    </td>
+    <td>
+       <%= link_to "Post 情報を投稿し共有しよう", new_post_path %>
+    </td>
+    <td>
+       <%= link_to "List みんなの投稿を覗いてみよう", post_index_path %>
+    </td>
+    <td>
+       <%= link_to "Calculate 様々な内訳を計算しよう", new_calculate_path %>
+    </td>
+  </tr>
+</tbody>

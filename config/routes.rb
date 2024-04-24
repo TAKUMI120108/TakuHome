@@ -4,7 +4,7 @@ Rails.application.routes.draw do
    root to: "homes#top"
     resources :search, only: [:new, :index, :show, :create] 
     resources :post
-    resources :calculate, only: [:new, :index, :create, :show]
+    resources :calculate
     resources :customer, only: [:index, :create, :show, :edit, :update] do
       collection do
         get :mypage 

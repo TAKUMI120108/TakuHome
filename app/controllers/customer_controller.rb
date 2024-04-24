@@ -24,8 +24,8 @@ class CustomerController < ApplicationController
   end
   
   def update
-    customer = Customer.find(params[:id])
-    if customer.update(customer_params)
+    @customer = Customer.find(params[:id])
+    if @customer.update(customer_params)
     flash[:notice] = "You have updated costomer successfully." 
     redirect_to  mypage_customer_index_path
     else
@@ -35,7 +35,7 @@ class CustomerController < ApplicationController
   
   private
   def customer_params
-    params.require(:customer).permit(:address, :comment, :evaluation, :customer_id, :star,:image)
+    params.require(:customer).permit(:name, :address, :comment, :evaluation, :customer_id, :star,:image)
   end
 end
 

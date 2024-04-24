@@ -1,2 +1,3 @@
 class Calculate < ApplicationRecord
+  
 end
