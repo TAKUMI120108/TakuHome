@@ -1,13 +1,13 @@
 <div class="text-center border d-inline list-unstyled">
+
 <h4>Create</br>
 物件の登録をしよう</h4>
 
-<%= form_with model: @search, url: search_index_path, method: :post do |f| %>
-
-  <label for = "inputImage">物件画像</label></br>
-  <%= f.file_field :image, autofocus: true, id:"inputImage", placeholder:"Image" %></br>
-
-  <p>物件名</p>
+<%= form_with model: @search, url: search_path(@search.id), method: :patch do |f| %>
+ <label for = "inputImage">Image</label></br>
+    <%= f.file_field :image, autofocus: true, id:"inputImage", placeholder:"Image" %>
+     
+ <p>物件名</p>
   <%= f.text_field :name%>
 
   <p>都道府県</p>
@@ -36,9 +36,9 @@
 
   <p>保証料</p>
    <%= f.text_field :guarantee_charge %>円</br>
-
- <%= f.submit '完了' %>
+   
+<%= f.submit '完了' %>
 
 <% end %>
 </div>
- <%= render 'search/template1', search: @search %>
+<%= render 'search/template1', search: @search %>

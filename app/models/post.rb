@@ -3,4 +3,5 @@ class Post < ApplicationRecord
   belongs_to :customer
   validates :address, presence: true
   validates :comment, presence: true
+  validates :star, presence: true
 end

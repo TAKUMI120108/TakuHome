@@ -1,3 +1,4 @@
+<div class="text-center border d-inline list-unstyled">
 <div class ="top">
 
 　　<h2>Welcome Calculate</h2>
@@ -5,16 +6,6 @@
 　　<%= link_to "Calculate", new_calculate_path %>
 </div>
 
-<li>
- <%= link_to "Search 様々な地域の家を探そう", new_search_path %>
-</li>
-
-<li>
- <%= link_to "Post 情報を投稿し共有しよう", new_post_path %>
-</li>
-
-<li>
- <%= link_to "List みんなの投稿を覗いてみよう", post_index_path %>
-</li>
-
-https://papael14.com/rails-calculation/
+<%= render 'calculate/template', calculate: @calculate %>
+</div>
+<!--https://papael14.com/rails-calculation/-->

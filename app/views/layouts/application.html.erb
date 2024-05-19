@@ -6,19 +6,27 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_pack_tag 'application' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= include_gon %>
+    <!--<script type="text/javascript" src="//jpostal-1006.appspot.com/jquery.jpostal.js"></script>-->
+    <%#= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
       <header>
+        <div class="p-3 d-flex justify-content-between shadow-lg ">
+        <div class="h-25 rounded border text-center align-middle" style="width: 150px;" >
         <h1>Taku</br>Home</h1>
+        </div>
     <% if customer_signed_in? %>
        <div>管理者用
        <%= link_to current_customer.name, mypage_customer_index_path %>
       </div>
+    <ul class="p-2">
      <li>
-        <%= link_to "Search", new_search_path %>
+        <%= link_to "Search", choice_path %>
       </li>
       <li>
         <%= link_to "Post", new_post_path %>
@@ -32,7 +40,11 @@
       <li>
         <%= link_to "Log out", destroy_customer_session_path, method: :delete %>
       </li>
+     </ul>
+    </div>
     <% else %>
+    <div class="d-flex justify-content-end p-2">
+     <ul>
      <li>
         <%= link_to "Home", root_path %>
       </li>
@@ -48,6 +60,9 @@
       <li>
         <%= link_to "Log in", new_customer_session_path %>
       </li>
+      </ul>
+    </div>
+    </div>
     <% end %>
   </header>
   <main>

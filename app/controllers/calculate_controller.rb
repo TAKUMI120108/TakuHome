@@ -9,19 +9,24 @@ class CalculateController < ApplicationController
   def show
    @calculate = Calculate.find params[:id] 
    @number1 = @calculate["home_pay"] 
-   @number2 = @keisan["other_payment_amount"] 
-   @number3 = @keisan["rent"] 
-   @number4 = @keisan["security_deposit"] 
-   @number5 = @keisan["key_money"] 
-   @number6 = @keisan["management_fee"] 
-   @number7 = @keisan["guarantee_charge"] 
-   @hikizan = @number1 - @number2 + @number3 + @number4 + @number5 + @number6 + @number7
+   @number2 = @calculate["other_payment_amount"] 
+   @number3 = @calculate["rent"] 
+   @number4 = @calculate["security_deposit"] 
+   @number5 = @calculate["key_money"] 
+   @number6 = @calculate["management_fee"] 
+   @number7 = @calculate["guarantee_charge"] 
+   @hikizan = @number1 - @number2 - @number3 - @number4 - @number5 - @number6 - @number7
   end
   
   def create
     @calculate = Calculate.new(calculate_params)
-    @calculate.save
+    if @calculate.save
+      flash[:notice] = "計算できました。"
     redirect_to calculate_path(@calculate)
+    else
+      flash.now[:alert] = "計算に失敗しました。"
+      render :new
+    end
   end
   
   private

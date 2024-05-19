@@ -1,3 +1,4 @@
+<div class="text-center border d-inline list-unstyled">
 <h2>Sign up</h2>
 
 <%= form_with model: @customer, url: customer_registration_path do |f| %>
@@ -29,6 +30,8 @@
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
+  <%= render "devise/shared/links" %>
 <% end %>
+</div>
 
-<%= render "devise/shared/links" %>
+

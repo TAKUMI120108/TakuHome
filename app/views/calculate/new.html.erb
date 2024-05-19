@@ -1,6 +1,16 @@
-<p>計算をするので数字を入力してください。</p> 
-<%= form_with model: @calculate, url: calculate_index_path, method: :post do |f| %>
+<div class="text-center w-auto list-unstyled">
+<% if @calculate.errors.any? %>
+  <%= @calculate.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @calculate.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 
+<p>計算数値を入力してください。</p> 
+<%= form_with model: @calculate, url: calculate_index_path, method: :post do |f| %>
+<div class="text-center border list-unstyled p-4 rounded-0 w-auto">
 <h3>ユーザー情報</h3>
 <p> 
  <%= f.label :手取り %>
@@ -9,7 +19,9 @@
 <p><%= f.label :その他支払額 %>
 <%= f.number_field :other_payment_amount %>
 </p>
+</div>
 
+<div class="text-center border list-unstyled p-4 rounded-0 w-auto">
 <h3>希望賃貸情報</h3>
 <p> 
  <%= f.label :賃料 %>
@@ -27,25 +39,14 @@
 <p><%= f.label :保証料 %>
 <%= f.number_field :guarantee_charge %>
 </p>
+</div>
 <p> 
-<%= f.submit %>
+<%= f.submit '完了' %>
 </p>
 <% end %>
- 
 
- 
 <%= link_to "Topへ", calculate_index_path %>
-
-<li>
- <%= link_to "Search 様々な地域の家を探そう", new_search_path %>
-</li>
-
-<li>
- <%= link_to "Post 情報を投稿し共有しよう", new_post_path %>
-</li>
-
-<li>
- <%= link_to "List みんなの投稿を覗いてみよう", post_index_path %>
-</li>
+</div>
+<%= render 'calculate/template', calculate: @calculate %>
 
 <!--https://papael14.com/rails-calculation/-->

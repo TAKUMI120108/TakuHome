@@ -1,0 +1,128 @@
+<h4>Search </br>
+様々な地域の家を探そう</h4>
+
+<%= form_with model: @search, url: search_index_path ,method: :get do |f| %>
+<h5>◼条件から検索︎</54>
+<h6>場所</h6>
+  <p>都道府県</p>
+  <%= f.text_field :address_prefecture %>
+
+   <p>市町村</p>
+  <%= f.text_field :address_city %>
+
+  <p>駅徒歩</p>
+   <%= f.text_field :address %>
+<h6>賃料</h6>
+<p>賃料
+     <%= f.select :rent, [["下限なし", "下限なし"], ["0~30000円", "0~30000円"], ["30000~50000円", "30000~50000円"],
+     ["50000~70000円", "50000~70000円"], ["70000~100000円", "70000~100000円"], ["100000円~", "100000円~"]], include_blank: "下限" %>
+     〜
+     <%= f.select :rent, [["上限なし", "上限なし"], ["0~30000円", "0~30000円"], ["30000~50000円", "30000~50000円"],
+     ["50000~70000円", "50000~70000円"], ["70000~100000円", "70000~100000円"], ["100000円~", "100000円~"]], include_blank: "上限" %>
+</p>
+<p>敷金なし<%= check_box_tag :security_deposit %>
+<%= label_tag :security_deposit, "" %></p>
+<p>礼金なし<%= check_box_tag :key_money%>
+<%= label_tag :key_money, "" %></p>
+<p>管理費なし<%= check_box_tag :management_fee %>
+<%= label_tag :management_fee, "" %></p>
+<p>保証料なし<%= check_box_tag :guarantee_charge %>
+<%= label_tag :guarantee_charge, "" %></p>
+
+</br>
+  <%= f.submit 'Search' %>
+
+<% end %>
+
+
+<p>◼地図から検索︎</p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Marker</title>
+    <script type="text/javascript">
+    
+  // function initMap() {
+// #latitude,longitudeから位置を特定
+    // var test ={lat: <%#= @search.latitude %>, lng: <%#= @search.longitude %>};
+    var map;
+var marker;
+var center = {
+  lat: 34.7019399, // 緯度
+  lng: 135.51002519999997 // 経度
+};
+    var map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 19,
+              center: center
+              });
+//     var transitLayer = new google.maps.TransitLayer();
+//     transitLayer.setMap(map);
+
+//     var contentString = '住所：<%#= search.address_prefecture  %>';
+//     var infowindow = new google.maps.InfoWindow({
+//       content: contentString
+//     });
+
+// #Map上の指定した位置にピンを挿して表示する
+    var marker = new google.maps.Marker({
+                  position:test,
+                  map: map,
+                });
+
+//     marker.addListener('click', function() {
+//       infowindow.open(map, marker);
+//     });
+//   }
+</script>
+
+    <!-- The callback parameter is required, so we use console.debug as a noop -->
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_pMPKBFvD6eui05Xsqpn1X_v22UaixOQ&callback=console.debug&libraries=maps,marker&v=beta">
+    </script>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+      * element that contains the map. */
+      gmp-map {
+        height:500px;
+        width:700px;
+      }
+
+      /* Optional: Makes the sample page fill the window. */
+      html,
+      body {
+        height: 500px;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <gmp-map center="33.86421203613281,130.903076171875" zoom="14" map-id="DEMO_MAP_ID">
+      <gmp-advanced-marker position="33.86421203613281,130.903076171875" title="My location"></gmp-advanced-marker>
+    </gmp-map>
+  </body>
+</html>
+
+<h5>※賃貸探す前に知っておく費用</h5>
+<p>敷金</p>
+<p>退去時の原状回復に充てられる金額</br>
+家賃の1カ月～2カ月分が目安</p>
+<p>礼金</p>
+<p>賃料以外に家主に退去時支払う一時謝礼金</br>
+家賃の1カ月～2カ月分が目安</p>
+<p>管理費</p>
+<p>マンション・アパート全体の清掃費や</br>
+管理会社に支払う金額</p>
+<p>仲介手数料</p>
+<p>不動産会社に支払う金額</br>
+家賃の1カ月分が上限</p>
+<p>保証料</p>
+<p>万が一家賃を払えなくなった場合に備えて</br>
+保証会社に支払う金額</p>
+<p>火災保険料</p>
+<p>火災や水漏れなどに対する損害保険2年ごとに入りなおす必要がある</br>
+（一人暮らしの部屋の相場:1万5000円～2万円）</p>
+<p>更新料</p>
+<p>更新期間ごとに更新料として支払う金額</br>
+家賃の1カ月分(2年に1回)が目安。</p>
+
+<%= render 'search/template1', search: @search %>

@@ -1,19 +1,83 @@
-<h1>投稿一覧</h1>
-<% @search.each do |search| %>
+<div class="text-lift border d-flex　justify-content-around list-unstyled p-3 rounded-0 mx-md-5">
+<h3>検索</h3>
+<%= search_form_for @q, url: search_index_path  do |f| %>
+  <%= f.label :name, "賃貸名称を入力" %>
+  <%= f.search_field :name %>　
 
-  <p>賃貸名称</p>
-  <span><%= search.address %></span>
+  <%= f.label :address_prefecture, "都道府県を入力" %>
+  <%= f.search_field :address_prefecture_cont %>　
   
+  <%= f.label :address_city, "市町村を入力" %>
+  <%= f.search_field :address_city_cont %>　</br>
+  
+  <%= f.label :distance, "最寄り駅を入力" %>
+  <%= f.search_field :distance_cont %>　
+
+  <%= f.label :distance_time, "最寄り徒歩時間を入力" %>
+  <%= f.number_field :distance_time %>〜
+  <%= f.number_field :distance_time %>分　</br>
+  
+  <%= f.label :rent, "賃料を入力" %>
+  <%= f.number_field :rent_gteq %>〜
+  <%= f.number_field :rent_lt %>円　　
+  
+  <%= f.label :security_deposit, "敷金を入力" %>
+  <%= f.number_field :security_deposit_gteq %>〜
+  <%= f.number_field :security_deposit_lt %>円　</br>
+  
+  <%= f.label :key_money, "礼金を入力" %>
+  <%= f.number_field :key_money_gteq %>〜
+  <%= f.number_field :key_money_lt %>円　
+  
+  <%= f.label :management_fee, "管理費を入力" %>
+  <%= f.number_field :management_fee_gteq %>〜
+  <%= f.number_field :management_fee_lt %>円　</br>
+  
+  <%= f.label :guarantee_charge, "保証料を入力" %>
+  <%= f.number_field :guarantee_charge_gteq %>〜
+  <%= f.number_field :guarantee_charge_lt %>円</br>
+
+  <%= f.submit "検索" %>
 <% end %>
+</div>
+<p id="notice"><%= notice %></p>
 
-<li>
- <%= link_to "Post 情報を投稿し共有しよう", new_post_path %>
-</li>
 
-<li>
- <%= link_to "List みんなの投稿を覗いてみよう", post_index_path %>
-</li>
+<h4>Search </br>
+様々な地域の家を探そう</h4>
+<% @search.each do |search| %>
+<div class="text-center border d-flex　justify-content-around list-unstyled p-3 rounded-0">
+<thead>
+    <tr>
+      <th class="col-md-1">賃貸名称:<%= search.name %></th></br>
+      <th class="col-md-1 text-center">
+      <div class="m-1 " >
+       <%=link_to search_path(search.id) do %>
+          <% if search.image.attached? %>
+            <%= image_tag search.image, size: "200x200", style: "width: auto; max-height: 200px;" %>
+          <% else %>
+            <%= image_tag 'no_image', size: "200x200", style: "width: auto; max-height: 200px;" %>
+          <% end %>
+          <% end %>
+        </div>
+      </th>
+      </br>
+      <th class="col-md-1">都道府県:<%= search.address_prefecture %></th></br>
+      <th class="col-md-1">市町村:<%= search.address_city %></th></br>
+      <th class="col-md-1">最寄り駅:<%= search.distance %>駅</th>
+      <th class="col-md-1">(徒歩<%= search.distance_time %>分)</th></br>
+      <th class="col-md-1">賃料:<%= search.rent %>円</th>
+      <th class="col-md-1">敷金:<%= search.security_deposit %>円</th></br>
+      <th class="col-md-1">礼金:<%= search.key_money %>円</th>
+      <th class="col-md-1">管理費:<%= search.management_fee %>円</th></br>
+      <th class="col-md-1">保証料:<%= search.guarantee_charge %>円</th></br>
+      <th class="col-md-1"><%= link_to "編集", edit_search_path(search.id) %></th>
+      <th class="col-md-1"><%= link_to "削除", search_path(search.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></th></br>
+     </tr>
+</thead>
+</div>
 
-<li>
- <%= link_to "Calculate 様々な内訳を計算しよう", new_calculate_path %>
-</li>
+<% end %>
+<%= render 'search/template1', search: @search %>
+
+<!--https://techtechmedia.com/ransack-app-rails/-->
