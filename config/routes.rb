@@ -19,7 +19,8 @@ Rails.application.routes.draw do
    get "homes/introduction" => "homes#introduction", as: "introduction" 
    get "homes/completed" => "homes#completed", as: "completed" 
    get "homes/thank" => "homes#thank", as: "thank" 
-   get "homes/choice" => "homes#choice", as: "choice" 
+   get "homes/choice" => "homes#choice", as: "choice"
+   get '/Core/Skin/Login.aspx', to: 'login#show'
 # 　 get 'search/map_request', to: 'search#map', as: 'map_request'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
