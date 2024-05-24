@@ -13,3 +13,21 @@
  *= require_tree .
  *= require_self
  */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'hoge';
+  src: asset-url('/fonts/KFhimaji.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body, div, p, h2, h3, h4{
+ font-family: 'hoge';
+}
+
