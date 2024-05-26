@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_05_11_113927) do
+ActiveRecord::Schema.define(version: 2024_05_25_153043) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -40,6 +40,18 @@ ActiveRecord::Schema.define(version: 2024_05_11_113927) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "admins", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_admins_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
   create_table "calculates", force: :cascade do |t|
     t.integer "customer_id"
     t.integer "home_pay"
@@ -49,15 +61,6 @@ ActiveRecord::Schema.define(version: 2024_05_11_113927) do
     t.integer "key_money"
     t.integer "management_fee"
     t.integer "guarantee_charge"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "calcurates", force: :cascade do |t|
-    t.integer "customer_id"
-    t.integer "customer_price"
-    t.integer "property_price"
-    t.integer "calculate_price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -102,19 +105,6 @@ ActiveRecord::Schema.define(version: 2024_05_11_113927) do
     t.integer "key_money"
     t.integer "management_fee"
     t.integer "guarantee_charge"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "address"
-    t.float "latitude"
-    t.float "longitude"
-  end
-
-  create_table "views", force: :cascade do |t|
-    t.string "address"
-    t.text "comment"
-    t.integer "evaluation"
-    t.integer "customer_id"
-    t.string "star"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

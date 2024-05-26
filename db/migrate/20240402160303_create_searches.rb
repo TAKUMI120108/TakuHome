@@ -13,9 +13,6 @@ class CreateSearches < ActiveRecord::Migration[6.1]
       t.integer :management_fee
       t.integer :guarantee_charge
       t.timestamps
-      add_column :searches, :address, :string
-      add_column :searches, :latitude, :float
-      add_column :searches, :longitude, :float
     end
   end
 end
