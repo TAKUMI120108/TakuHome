@@ -1,7 +1,6 @@
 class Search < ApplicationRecord
   has_one_attached :image
   belongs_to :customer, optional: true
-  after_validation :geocode
   validates :address_prefecture, presence: true
   validates :address_city, presence: true
   validates :distance, presence: true
