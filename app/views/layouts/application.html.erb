@@ -26,7 +26,7 @@
        <div>管理者用
        <%= link_to current_customer.name, mypage_customer_index_path %>
       </div>
-    <ul class="p-2">
+    <ul class="p-2 list-unstyled">
      <li>
         <%= link_to "Search", choice_path %>
       </li>
@@ -45,8 +45,8 @@
      </ul>
     </div>
     <% else %>
-    <div class="d-flex justify-content-end p-2">
-     <ul>
+    <div>
+     <ul class="p-2 list-unstyled">
      <li>
         <%= link_to "Home", root_path %>
       </li>
