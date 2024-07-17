@@ -1,4 +1,5 @@
-  <h4><%= @customer.name %>
+ <div class="text-center border d-inline list-unstyled">
+ <h4><%= @customer.name %>
 <%= link_to "編集", edit_customer_path(@customer) %>
 </h4>
   <% if @customer.image.attached? %>
@@ -6,7 +7,7 @@
   <% else %>
     <%= image_tag 'no_image', size: "200x200" %>
   <% end %>
-
+</div>
 <table class="table text-center">
   <thead>
     <tr>
