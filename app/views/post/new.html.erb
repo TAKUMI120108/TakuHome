@@ -12,13 +12,13 @@
 情報を投稿し共有しよう</h4>
 <%= form_with model: @post, url: post_index_path, method: :post do |f| %>
 
-  <p>住所</p>
+  <div>住所</div>
   <%= f.text_field :address %>
-
-  <p>コメント</p>
+  
+  <div>コメント</div>
   <%= f.text_area :comment %>
 
-	<p>評価</p>
+	<div>評価</div>
   <% if @post.id.nil? %>
     <div class="form-group row mx-auto d-block" id="star">
       <%= f.label :star,'評価 ', class:'col-md-3 col-form-label' %>
