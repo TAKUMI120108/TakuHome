@@ -7,34 +7,34 @@
  <label for = "inputImage">Image</label></br>
     <%= f.file_field :image, autofocus: true, id:"inputImage", placeholder:"Image" %>
      
- <p>物件名</p>
+ <div>物件名</div>
   <%= f.text_field :name%>
 
-  <p>都道府県</p>
+  <div>都道府県</div>
   <%= f.text_field :address_prefecture %>
 
-  <p>市町村</p>
+  <div>市町村</div>
    <%= f.text_field :address_city %>
 
-  <p>最寄り駅</p>
+  <div>最寄り駅</div>
    <%= f.text_field :distance %>駅
 
-  <p>最寄り駅徒歩時間</p>
+  <div>最寄り駅徒歩時間</div>
    <%= f.text_field :distance_time %>分
 
-  <p>賃貸</p>
+  <div>賃貸</div>
    <%= f.text_field :rent %>円
 
-  <p>敷金</p>
+  <div>敷金</div>
    <%= f.text_field :security_deposit %>円
 
-  <p>礼金</p>
+  <div>礼金</div>
    <%= f.text_field :key_money %>円
 
-  <p>管理費</p>
+  <div>管理費</div>
    <%= f.text_field :management_fee %>円
 
-  <p>保証料</p>
+  <div>保証料</div>
    <%= f.text_field :guarantee_charge %>円</br>
    
 <%= f.submit '完了' %>

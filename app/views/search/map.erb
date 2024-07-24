@@ -1,6 +1,0 @@
-<%= form_with local: true, class: "mt-4 form-column-width", method: :post  do |f| %>
-  <%= f.label :address, class: "form-label fw-bold"%>
-  <%= f.text_field :address, autofocus: true,placeholder: "住所を入力してください", class: "form-control" %>
-  <%= f.submit (@search.new_record? ? "投稿する" : "更新する"), class: "btn btn-primary mb-4" %>
-
-<% end %>

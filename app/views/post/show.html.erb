@@ -2,20 +2,19 @@
 <h4>Post</br>
 情報を投稿し共有しよう</h4>
 
-<p>プロフィール</p>
+<div>プロフィール</div>
  <% if @post.customer.image.attached? %>
   <%= image_tag @post.customer.image, size: "200x200" %>
   <% else %>
   <%= image_tag 'no_image', size: "200x200" %>
   <% end %>
  
-<p>No</p>
-<%= @post.id %>
-<p>都道府県</p>
+<div>No<%= @post.id %></div>
+<div>都道府県</div>
 <%= @post.address %>
-<p>コメント</p>
+<div>コメント</div>
 <%= @post.comment %>
-<p>評価</p>
+<div>評価</div>
   <div class="form-group row mx-auto d-block"  id="star_<%= @post.id %>"></div>
 <script>
   let elem = document.querySelector('#star_<%= @post.id %>');
