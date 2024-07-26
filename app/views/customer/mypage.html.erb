@@ -11,9 +11,9 @@
 <table class="table text-center">
   <thead>
     <tr>
-      <th class="col-md-2">都道府県</th>
+      <th class="col-md-3">都道府県</th>
       <th class="col-md-3">コメント</th>
-      <th colspan="col-md-2">評価</th>
+      <th colspan="col-md-3">評価</th>
       <th class="col-md-3"></th>
     </tr>
   </thead>
@@ -23,7 +23,7 @@
   <tr>
     <td class="col-md-3 text-center"><%= post.address %></td>
     <td class="col-md-3 text-center"><%= post.comment %></td>
-    <td class="col-md-4 text-center"><div id="star_<%= post.id %>"></div>
+    <td class="col-md-3 text-center"><div id="star_<%= post.id %>"></div>
     <script>{
   let elem = document.querySelector('#star_<%= post.id %>');
   
@@ -39,8 +39,8 @@
 }
 </script>
   </td>
-    <td class="col text-center" style="width: 50px;"><%= link_to "編集", edit_post_path(post.id) %></td>
-    <td class="col text-center" style="width: 50px; white-space: nowrap;"><%= link_to "削除", post_path(post.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+    <td class="col text-center" style="width: 50px;"><%= link_to "編集", edit_post_path(post.id) %>
+    <%= link_to "削除", post_path(post.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
   </tr>
 </tbody>
 
