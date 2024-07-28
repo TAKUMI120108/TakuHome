@@ -23,7 +23,7 @@
         <h1>Taku</br>Home</h1>
         </div>
     <% if customer_signed_in? %>
-       <div>管理者用
+       <div>User:
        <%= link_to current_customer.name, mypage_customer_index_path %>
       </div>
     <ul class="p-2 list-unstyled">
