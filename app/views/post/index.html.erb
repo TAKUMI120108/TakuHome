@@ -6,11 +6,11 @@
   <thead>
     <tr>
       <th class="col-md-2">プロフィール</th>
-      <th class="col-md-2">No</th>
+      <th class="col-md-1">No</th>
       <th class="col-md-2">都道府県</th>
       <th class="col-md-2">コメント</th>
       <th colspan="col-md-2">評価</th>
-      <th style="width: 50px;"></th>
+      <th style="width: 100px;"></th>
       <th style="width: 50px;"></th>
     </tr>
   </thead>
@@ -27,7 +27,7 @@
             <%= image_tag 'no_image', size: "200x200", style: "width: auto; max-height: 200px;" %>
           <% end %>
         </td>
-        <td class="col-md-2 text-center"><%= link_to post.id,post_path(post.id) %></td>
+        <td class="col-md-1 text-center"><%= link_to post.id,post_path(post.id) %></td>
         <td class="col-md-2  text-center"><%= post.address %> </td>
         <td class="col-md-2  text-center"><%= post.comment %> </td>
         <td class="col-md-2  text-center"><div id="star_<%= post.id %>"></div>
@@ -46,7 +46,7 @@
             }
           </script>
         </td>
-        <td class="col text-center" style="width: 50px;">
+        <td class="col text-center" style="width: 100px;">
           <% if post.customer_id == current_customer.id %>
           <%= link_to "編集", edit_post_path(post.id) %>
           <% end %>
