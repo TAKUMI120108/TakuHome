@@ -1,6 +1,8 @@
 <div class="text-center border d-flex　justify-content-around list-unstyled p-3 rounded-0">
   <h4><%= @customer.name %>
+   <% if @customer.id == current_customer.id %>
 <%= link_to "編集", edit_customer_path(@customer) %>
+<% end %>
 </h4>
   <% if @customer.image.attached? %>
   <%= image_tag @customer.image, size: "200x200" %>
@@ -39,8 +41,12 @@
 }
 </script>
   </td>
-    <td class="col text-center" style="width: 200px;"><%= link_to "編集", edit_post_path(post.id) %></td>
-    <td class="col text-center" style="width: 50px; white-space: nowrap;"><%= link_to "削除", post_path(post.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+    <td class="col text-center" style="width: 50px;">
+      <% if @customer.id == current_customer.id %>
+      <%= link_to "編集", edit_post_path(post.id) %>
+    <%= link_to "削除", post_path(post.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+      <% end %>
+    </td>
   </tr>
 </tbody>
 
