@@ -34,7 +34,9 @@
  <%= link_to "Back", post_index_path %>
 </div>
 <div>
+  <% if @post.customer_id == current_customer.id %>
  <%= link_to "edit", edit_post_path %>
+  <% end %>
 </div>
 
 <%= render 'post/template1', post: @post %>

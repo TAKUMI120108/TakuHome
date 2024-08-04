@@ -14,12 +14,6 @@
     <%= f.file_field :image, autofocus: true, id:"inputImage", placeholder:"Image" %>
      </br>
   <%= f.submit '完了' %>
-
-
-
-
-<%= link_to "編集", edit_post_path(@customer.id) %>
-<%= link_to "削除", post_path(@customer.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
 <% end %>
 <%= render 'customer/template', customer: @customer %>
 
