@@ -10,7 +10,7 @@
     <%= image_tag 'no_image', size: "200x200" %>
   <% end %>
 </div>
-<table class="table text-center">
+<table class="table text-left">
   <thead>
     <tr>
       <th class="col-md-3">都道府県</th>
@@ -23,9 +23,9 @@
 <tbody>
  <% @customer.posts.each do |post| %>
   <tr>
-    <td class="col-md-3 text-center"><%= post.address %></td>
-    <td class="col-md-3 text-center"><%= post.comment %></td>
-    <td class="col-md-3 text-center"><div id="star_<%= post.id %>"></div>
+    <td class="col-md-3 text-left"><%= post.address %></td>
+    <td class="col-md-3 text-left"><%= post.comment %></td>
+    <td class="col-md-3 text-left"><div id="star_<%= post.id %>"></div>
     <script>{
   let elem = document.querySelector('#star_<%= post.id %>');
   

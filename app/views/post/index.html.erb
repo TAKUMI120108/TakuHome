@@ -2,14 +2,14 @@
  <h4>Post</br>
 情報を投稿し共有しよう</h4>
  </div>
-<table class="table text-center">
+<table class="table text-left">
   <thead>
     <tr>
       <th class="col-md-2">プロフィール</th>
       <th class="col-md-1">No</th>
-      <th class="col-md-2">都道府県</th>
+      <th class="col-md-1">都道府県</th>
       <th class="col-md-2">コメント</th>
-      <th colspan="col-md-2">評価</th>
+      <th colspan="col-md-1">評価</th>
       <th style="width: 100px;"></th>
       <th style="width: 50px;"></th>
     </tr>
@@ -18,7 +18,7 @@
   <tbody>
     <% @posts.each do |post| %>
       <tr>
-        <td class="col-md-2 text-center">
+        <td class="col-md-2 text-left">
           <% if post.customer.image.attached? %>
            <%= link_to customer_path(post.customer_id) do %>
             <%= image_tag post.customer.image, size: "200x200", style: "width: auto; max-height: 200px;" %>
@@ -27,10 +27,10 @@
             <%= image_tag 'no_image', size: "200x200", style: "width: auto; max-height: 200px;" %>
           <% end %>
         </td>
-        <td class="col-md-1 text-center"><%= link_to post.id,post_path(post.id) %></td>
-        <td class="col-md-2  text-center"><%= post.address %> </td>
-        <td class="col-md-2  text-center"><%= post.comment %> </td>
-        <td class="col-md-2  text-center"><div id="star_<%= post.id %>"></div>
+        <td class="col-md-1 text-left"><%= link_to post.id,post_path(post.id) %></td>
+        <td class="col-md-1  text-left"><%= post.address %> </td>
+        <td class="col-md-2  text-left"><%= post.comment %> </td>
+        <td class="col-md-1  text-left"><div id="star_<%= post.id %>"></div>
           <script>
             {
               let elem = document.querySelector('#star_<%= post.id %>');
