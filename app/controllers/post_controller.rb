@@ -55,7 +55,7 @@ private
   def is_matching_login_user
     @post = Post.find(params[:id])
     unless @post.customer.id == current_customer.id
-     redirect_to request.referer
+     redirect_to root_path
     end
   end
 end

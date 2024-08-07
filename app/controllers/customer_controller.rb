@@ -34,7 +34,7 @@ before_action :is_matching_login_user, only: [:edit, :update]
   def is_matching_login_user
     @customer = Customer.find(params[:id])
     unless @customer.id == current_customer.id
-     redirect_to request.referer
+     redirect_to root_path
     end
   end
 end

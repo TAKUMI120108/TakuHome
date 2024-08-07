@@ -26,10 +26,10 @@ class SearchController < ApplicationController
   def create
     @search = Search.new(search_params)
     if @search.save
-      flash[:notice] = "保存に成功しました."
+      flash[:notice] = "投稿に成功しました."
       redirect_to search_index_path
     else
-      flash.now[:alert] = "保存に失敗しました."
+      flash.now[:alert] = "投稿に失敗しました."
       render :new
     end
   end
@@ -47,9 +47,10 @@ class SearchController < ApplicationController
   def update
     @search = Search.find(params[:id])
     if @search.update(search_params)
-      flash[:notice] = "You have updated search successfully."
+      flash[:notice] = "保存に成功しました。"
     redirect_to search_path(@search.id)
     else
+      flash.now[:alert] = "保存に失敗しました."
      render :edit
     end
   end

@@ -1,4 +1,12 @@
 <div class="text-center border d-inline list-unstyled">
+ <% if @search.errors.any? %>
+  <%= @search.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @search.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 <h4>Create</br>
 物件の登録をしよう</h4>
 
